@@ -23,6 +23,16 @@ var firebaseConfig = {
 const express = require('express')
 //initiate express to app
 const app = express()
+
+//hopefully fix CORS stuff?
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS');
+  next();
+});
+
+
 //set port, use environmental variables, or use 4000 if it doesn't exist 
 const port = process.env.PORT || 4000;
 
