@@ -7,8 +7,7 @@ var firebase = require("firebase"); //don't need to initialize or config, alread
 //referene the database
 const db = firebase.firestore();
 
-/*Get Single Post*/
-const blogposts = db.collection("userProfile"); //reference to collections
+const profile = db.collection("userProfile"); //extra stuff 
 //No longer using sample
 //const docRef = blogposts.doc("sample-post"); //same as db.collection("blogposts").doc("sample")
 
@@ -18,8 +17,8 @@ router.get('/', (req,res) => res.send("Please include an ID"));
 //get request for single post with id
 router.get('/:id', (req, res) => {
     const queryID = req.params.id; //getting query id for the post, /:name and query.name just have to be the same
-    //get single item
-    blogposts.doc(queryID).get().then(function(doc) {
+    //get user profile
+    profile.doc(queryID).get().then(function(doc) {
         if (doc.exists) {
             //console.log("Document data:", doc.data());
             return res.send(doc.data());
