@@ -33,6 +33,7 @@ app.use(function (req, res, next) {
 });
 
 
+
 //set port, use environmental variables, or use 4000 if it doesn't exist 
 const port = process.env.PORT || 4000;
 
@@ -40,13 +41,13 @@ const port = process.env.PORT || 4000;
 const indexRoute = require("./routes/index.js");
 const postRoute = require("./routes/post.js");
 const userRoute = require("./routes/user.js");
-// const createRoute = require("./routes/createArticle.js");
+const createRoute = require("./routes/createPost.js");
 //Create routes 
 app.use('/', indexRoute);
 app.use('/post/', postRoute);
 app.use('/user/', userRoute);
 // app.use('/post', postRoute);
-// app.use('/create',createRoute);
+app.use('/create',createRoute);
 
 
 //Set up app to run
