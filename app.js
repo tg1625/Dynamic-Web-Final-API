@@ -42,12 +42,14 @@ const indexRoute = require("./routes/index.js");
 const postRoute = require("./routes/post.js");
 const userRoute = require("./routes/user.js");
 const createRoute = require("./routes/createPost.js");
+const updateProfileRoute = require("./routes/updateProfile.js");
+
 //Create routes 
 app.use('/', indexRoute);
 app.use('/post/', postRoute);
-app.use('/user/', userRoute);
-// app.use('/post', postRoute);
 app.use('/create',createRoute);
+app.use('/user/', userRoute);
+app.use('/update', updateProfileRoute);
 
 
 //Set up app to run
