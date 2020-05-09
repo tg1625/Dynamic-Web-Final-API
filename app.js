@@ -43,6 +43,8 @@ const postRoute = require("./routes/post.js");
 const userRoute = require("./routes/user.js");
 const createRoute = require("./routes/createPost.js");
 const updateProfileRoute = require("./routes/updateProfile.js");
+const repliesRoute = require("./routes/replies.js");
+const replyRoute = require("./routes/reply.js");
 
 //Create routes 
 app.use('/', indexRoute);
@@ -50,6 +52,8 @@ app.use('/post/', postRoute);
 app.use('/create',createRoute);
 app.use('/user/', userRoute);
 app.use('/update', updateProfileRoute);
+app.use('/replies/', repliesRoute);
+app.use('/reply', replyRoute);
 
 
 //Set up app to run
