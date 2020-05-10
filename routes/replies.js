@@ -14,7 +14,7 @@ router.get('/:id', (req, res) => {
     const queryID = req.params.id;
     if(queryID){
         var replyarray = []; //multiple posts, in the get to reset on reload
-        db.collection("reply").where("postid", "==", queryID)
+        db.collection("reply").where("postid", "==", queryID).orderBy("timestamp", "asc")
             .get()
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {

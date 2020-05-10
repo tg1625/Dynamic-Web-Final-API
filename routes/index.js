@@ -12,7 +12,7 @@ const db = firebase.firestore();
 //sending data as it happens?
 router.get('/', (req, res) => {
     var postarray = []; //multiple posts, in the get to reset on reload
-    const allposts = db.collection("posts").get()
+    const allposts = db.collection("posts").orderBy("timestamp", "desc").get()
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 console.log(`${doc.id} => ${doc.data()}`);
