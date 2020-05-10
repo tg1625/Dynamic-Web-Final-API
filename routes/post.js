@@ -35,6 +35,8 @@ router.get('/:id', (req, res) => {
     }
 );
 
+//handling for no id
+router.get('/user', (req,res) => res.send("Please include an ID"));
 router.get('/user/:id', (req,res) => {
     const userID = req.params.id;
     var postarray = [];
