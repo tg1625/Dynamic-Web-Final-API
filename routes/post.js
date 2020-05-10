@@ -34,7 +34,24 @@ router.get('/:id', (req, res) => {
     });
     }
 );
-//request for about/me
+
+router.get('/user/:id', (req,res) => {
+    const userID = req.params.id;
+    var postarray = [];
+    const allposts = db.collection("posts").where("authorid", "==", userID).orderBy("timestamp", "desc").get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                console.log(`${doc.id} => ${doc.data()}`);
+                postarray.push(doc.data());
+            });
+            return res.send(postarray); //doing the returns in this get to handle errors
+        })
+        .catch(function(error){
+            console.log("Error:",error);
+            return res.send(error); //handling errors here 
+        });    
+});
+//request for about/me, 
 //router.get('/me', (req, res) => res.send('A special post')); //routes are relative to route set in app.js
 
 //how to export in Express
